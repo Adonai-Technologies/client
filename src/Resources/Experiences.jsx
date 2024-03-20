@@ -3,7 +3,7 @@ export const ExperiencesData = [
         _id: "1234567890",
         company: "Adonai Technologies",
         period: "2021-present",
-        title: "Mern Stack Developer",
+        title: "Full Stack Developer",
         description: ""
     },
     {
