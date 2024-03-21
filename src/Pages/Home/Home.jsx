@@ -16,7 +16,7 @@ function Home() {
         <About />
         <Experiences />
         <Projects />
-        <Courses/>
+        <Courses />
       </div>
     </div>
   );
