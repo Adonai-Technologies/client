@@ -12,8 +12,8 @@ function LeftSider() {
 			<div className='flex flex-col items-center'>
 				<div className='flex flex-col gap-3 sm:flex-row'>
 					<a rel="noreferrer" target="_blank" href="https://web.facebook.com/Adonai.Technologies.7"><CiFacebook className='text-gray-400  cursor-pointer hover:text-white' /></a>
-					<a rel="noreferrer" target="_blank" href=""><CiMail className='text-gray-400  cursor-pointer hover:text-white' /></a>
-					<a rel="noreferrer" target="_blank" href=""><CiInstagram className='text-gray-400  cursor-pointer hover:text-white' /></a>
+					<a rel="noreferrer" target="_blank" href="akonadu506@gmail.com"><CiMail className='text-gray-400  cursor-pointer hover:text-white' /></a>
+					<a rel="noreferrer" target="_blank" href="https://www.instagram.com/adonaitechnologies1/"><CiInstagram className='text-gray-400  cursor-pointer hover:text-white' /></a>
 					<a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/akua-konadu-adonai-technologies/"><CiLinkedin className='text-gray-400  cursor-pointer hover:text-white' /></a>
 					<a rel="noreferrer" target="_blank" href="https://github.com/Adonai-Technologies"><FaGithub className='text-gray-400  cursor-pointer hover:text-white' /></a>
 					<a rel="noreferrer" target="_blank" href="https://twitter.com/AkuaAkua1993"><FaXTwitter className='text-gray-400  cursor-pointer hover:text-white' /></a>
