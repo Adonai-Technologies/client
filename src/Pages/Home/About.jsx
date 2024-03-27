@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function About() {
 	const {  portfolioData } = useSelector((state) => state.root);
 	const { about } = portfolioData;
-	const {skills,lottieURL,description,description2 } = about;
+	const {skills,lottieURL,description1,description2 } = about;
 	return (
 		<div>
 			<SectionTitle Title='About Me' />
@@ -21,7 +21,7 @@ function About() {
 				</div>
 				<div className=' flex flex-col gap-5 w-1/2 sm:w-full'>
 					<p className='text-white'>
-						{description}
+						{description1}
 					</p>
 					<p className='text-white'>
 						{description2}

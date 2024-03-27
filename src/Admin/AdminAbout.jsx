@@ -35,9 +35,10 @@ function AdminAbout() {
 					<input placeholder='lottieURL' />
 				</Form.Item>
 
-				<Form.Item name='description' label='Description'>
-					<textarea placeholder='Description' />
+				<Form.Item name='description1' label='Description1'>
+					<textarea placeholder='Description1' />
 				</Form.Item>
+
 				<Form.Item name='description2' label='Description2'>
 					<textarea placeholder='Description2' />
 				</Form.Item>
