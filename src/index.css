@@ -8,6 +8,10 @@
     font-family: "Montserrat", sans-serif;
 }
 
+.header h1{
+    margin: 0 !important;
+    padding: 0 !important;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
@@ -84,4 +88,25 @@
     100% {
         opacity: 1;
     }
+}
+
+
+/* input */
+
+input, textarea{
+    height: 40px;
+    border: 1px solid rgb(194, 187, 187);
+    width: 100%;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+input:focus{
+    outline: none;
+    border: 3px solid rgb(8, 7, 7);
+}
+
+textarea{
+    height: 100px;
+    padding-top: 10px;
 }
