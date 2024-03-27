@@ -1,16 +1,10 @@
 import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
+import { useSelector } from "react-redux";
 
 function Contact() {
-	const user = {
-		name: "Akua Konadu",
-		age: null,
-		gender: "Female",
-		mobile: "+233 54 965 2969",
-		email: "akonadu506@gmail.com",
-		country: "Ghana",
-	};
-
+	const { portfolioData } = useSelector((state) => state.root);
+	const { contact } = portfolioData;
 	return (
 		<div>
 			<SectionTitle Title='Get In Touch' />
@@ -18,10 +12,10 @@ function Contact() {
 			<div className='flex sm:flex-col items-center justify-between'>
 				<div className='flex flex-col gap-1'>
 					<p className='text-tertiary'>{"{"}</p>
-					{Object.keys(user).map((key) => (
+					{Object.keys(contact).map((key) => (
 						<p className='ml-5 '>
 							<span className='text-tertiary'>{key} : </span>
-							<span className='text-tertiary'>{user[key]}</span>
+							<span className='text-tertiary'>{contact[key]}</span>
 						</p>
 					))}
 					<p className='text-tertiary'>{"}"}</p>

@@ -1,3 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const rootSlice = createSlice({
 	name: "root",
 	initialState: {
@@ -17,6 +19,5 @@ const rootSlice = createSlice({
 	},
 });
 
-export default rootSlice;
-export const { ShowLoading, HideLoading, SetPortfolioData } =
-	rootSlice.reducers;
+export default rootSlice.reducer;
+export const { ShowLoading, HideLoading, SetPortfolioData } = rootSlice.actions;

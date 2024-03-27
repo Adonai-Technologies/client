@@ -1,15 +1,17 @@
 import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
-import { ExperiencesData } from "../../Resources/Experiences";
+import { useSelector } from "react-redux";
 
 function Experiences() {
+	const { portfolioData } = useSelector((state) => state.root);
+	const { experiences } = portfolioData;
 	const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
 	return (
 		<div>
 			<SectionTitle Title='Experience' />
 			<div className='flex py-10 gap-20 sm:flex-col'>
 				<div className='flex flex-col gap-10  border-[#135e4c82] border-l-2 w-1/3 sm:flex-row sm:overflow-scroll sm:w-full'>
-					{ExperiencesData.map((experience, index) => (
+					{experiences.map((experience, index) => (
 						<div
 							onClick={() => {
 								setSelectedItemIndex(index);
@@ -30,10 +32,10 @@ function Experiences() {
 
 				<div className='flex flex-col gap-5'>
 					<h1 className='text-secondary text-2xl'>
-						{ExperiencesData[selectedItemIndex].title}
+						{experiences[selectedItemIndex].title}
 					</h1>
 					<h1 className='text-tertiary text-1xl'>
-						{ExperiencesData[selectedItemIndex].company}
+						{experiences[selectedItemIndex].company}
 					</h1>
 					<p className='text-white'>
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
