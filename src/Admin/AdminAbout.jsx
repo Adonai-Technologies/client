@@ -9,6 +9,8 @@ function AdminAbout() {
 	const { portfolioData } = useSelector((state) => state.root);
 	const onFinish = async (values) => {
 		try {
+			const tempSkills = values.skills.split(",");
+			values.skills = tempSkills;
 			dispatch(ShowLoading());
 			const response = await axios.post("/api/update-about", {
 				...values,
@@ -30,7 +32,10 @@ function AdminAbout() {
 			<Form
 				onFinish={onFinish}
 				layout='vertical'
-				initialValues={portfolioData.about}>
+				initialValues={{
+					...portfolioData.about,
+					skills: portfolioData.about.skills.join(" , "),
+				}}>
 				<Form.Item name='lottieURL' label='Lottie URL'>
 					<input placeholder='lottieURL' />
 				</Form.Item>
@@ -41,6 +46,10 @@ function AdminAbout() {
 
 				<Form.Item name='description2' label='Description2'>
 					<textarea placeholder='Description2' />
+				</Form.Item>
+
+				<Form.Item name='skills' label='Skills'>
+					<textarea placeholder='Skills' />
 				</Form.Item>
 				<div className='flex justify-end w-full'>
 					<button className='px-10 py-2 bg-primary text-white' type='submit'>
