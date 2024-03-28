@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { antd } from "antd";
 import { Modal, Form } from "antd";
+import axios from "axios";
+import { message } from "antd";
+import { ShowLoading, HideLoading, ReloadData } from "../Redux/rootSilce";
 
 function AdminExperiences() {
 	const dispatch = useDispatch();
@@ -9,21 +11,40 @@ function AdminExperiences() {
 	const { experiences } = portfolioData;
 	const [showAddEditModal, setShowAddEditModal] = React.useState(false);
 	const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
+	const onFinish = async (values) => {
+		try {
+			dispatch(ShowLoading());
+			const response = await axios.post("/api/add-experience", values);
+			dispatch(HideLoading());
+			if (response.data.success) {
+				message.success(response.data.message);
+				setShowAddEditModal(false);
+				dispatch(HideLoading());
+				dispatch(ReloadData(true));
+			} else {
+				message.error(response.data.message);
+			}
+		} catch (error) {
+			dispatch(HideLoading());
+			message.error(error.message);
+		}
+	};
 
 	return (
 		<div>
 			<div className='flex justify-end'>
 				<button
 					className='bg-primary px-5 py-2 text-white'
-					onClick={() => (
-						setSelectedItemForEdit(null), setShowAddEditModal(true)
-					)}>
+					onClick={() => {
+						setSelectedItemForEdit(null);
+						setShowAddEditModal(true);
+					}}>
 					Add Experience
 				</button>
 			</div>
 			<div className='grid grid-cols-4 gap-5'>
-				{experiences.map((experience) => (
-					<div className='shadow border-2 p-5 border-gray-400 flex flex-col gap-5'>
+				{experiences.map((experience,index) => (
+					<div key={index} className='shadow border-2 p-5 border-gray-400 flex flex-col gap-5'>
 						<h1 className='text-primary text-xl font-bold'>
 							{experience.period}
 						</h1>
@@ -34,10 +55,10 @@ function AdminExperiences() {
 
 						<h1>Description : {experience.description}</h1>
 						<div className='flex justify-end gap-5 mt-5'>
-							<button className='bg-secondary text-white px-5 py-2 rounded'>
+							<button className='bg-secondary text-white px-5 py-2 rounded' type="submit">
 								Delete
 							</button>
-							<button className='bg-primary text-white px-5 py-2 rounded'>
+							<button className='bg-primary text-white px-5 py-2 rounded ' type="submit">
 								Edit
 							</button>
 						</div>
@@ -46,8 +67,12 @@ function AdminExperiences() {
 			</div>
 			<Modal
 				open={showAddEditModal}
-				title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}>
-				<Form layout='vertical'>
+				title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+				footer={null}
+				onCancel={() => {
+					setShowAddEditModal(false);
+				}}>
+				<Form layout='vertical ' onFinish={onFinish}>
 					<Form.Item name='period' label='Period'>
 						<input placeholder='Period' />
 					</Form.Item>
@@ -60,15 +85,15 @@ function AdminExperiences() {
 					<Form.Item name='description' label='Description'>
 						<textarea placeholder='Job description' />
 					</Form.Item>
-					<div className='flex'>
-						<button
+					<div className='flex justify-end'>
+						<button type="submit"
 							className='border-primary text-primary px-5 py-2'
 							onClick={() => {
 								setShowAddEditModal(false);
 							}}>
 							Cancel
 						</button>
-						<button className='bg-primary text-white px-5 py-2'>
+						<button type="submit" className='bg-primary text-white px-5 py-2'>
 							{selectedItemForEdit ? "Update" : "Add"}
 						</button>
 					</div>
