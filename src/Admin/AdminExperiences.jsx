@@ -1,21 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { antd } from "antd";
 import { Modal, Form } from "antd";
 
 function AdminExperiences() {
 	const dispatch = useDispatch();
 	const { portfolioData } = useSelector((state) => state.root);
 	const { experiences } = portfolioData;
-	const { showAddEditModal, setShowAddEditModal } = React.useState(false);
-	const { selectedItemForEdit, setSelectedItemForEdit } = React.useState(null);
+	const [showAddEditModal, setShowAddEditModal] = React.useState(false);
+	const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
+
 	return (
 		<div>
 			<div className='flex justify-end'>
 				<button
 					className='bg-primary px-5 py-2 text-white'
 					onClick={() => (
-						 setSelectedItemForEdit(null),
-						 setShowAddEditModal(true)
+						setSelectedItemForEdit(null), setShowAddEditModal(true)
 					)}>
 					Add Experience
 				</button>
