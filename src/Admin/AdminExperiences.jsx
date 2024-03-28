@@ -6,10 +6,20 @@ function AdminExperiences() {
 	const dispatch = useDispatch();
 	const { portfolioData } = useSelector((state) => state.root);
 	const { experiences } = portfolioData;
-	const { showAddEditModal, setShowAddEditModel } = React.useState(false);
+	const { showAddEditModal, setShowAddEditModal } = React.useState(false);
 	const { selectedItemForEdit, setSelectedItemForEdit } = React.useState(null);
 	return (
 		<div>
+			<div className='flex justify-end'>
+				<button
+					className='bg-primary px-5 py-2 text-white'
+					onClick={() => (
+						 setSelectedItemForEdit(null),
+						 setShowAddEditModal(true)
+					)}>
+					Add Experience
+				</button>
+			</div>
 			<div className='grid grid-cols-4 gap-5'>
 				{experiences.map((experience) => (
 					<div className='shadow border-2 p-5 border-gray-400 flex flex-col gap-5'>
@@ -50,7 +60,13 @@ function AdminExperiences() {
 						<textarea placeholder='Job description' />
 					</Form.Item>
 					<div className='flex'>
-						<button className='border-primary text-primary px-5 py-2'>Cancel</button>
+						<button
+							className='border-primary text-primary px-5 py-2'
+							onClick={() => {
+								setShowAddEditModal(false);
+							}}>
+							Cancel
+						</button>
 						<button className='bg-primary text-white px-5 py-2'>
 							{selectedItemForEdit ? "Update" : "Add"}
 						</button>
