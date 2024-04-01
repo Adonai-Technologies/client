@@ -1,4 +1,4 @@
-import rootSlice from "./rootSilce";
+import rootSlice from "./rootSlice";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 

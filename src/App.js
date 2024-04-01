@@ -9,7 +9,7 @@ import {
 	SetPortfolioData,
 	ShowLoading,
 	ReloadData,
-} from "./Redux/rootSilce";
+} from "./Redux/rootSlice";
 import Admin from "./Admin";
 
 
