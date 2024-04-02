@@ -110,3 +110,7 @@ textarea{
     height: 100px;
     padding-top: 10px;
 }
+
+.ant-model-wrap {
+    z-index: 50 !important;
+}

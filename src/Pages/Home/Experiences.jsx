@@ -15,6 +15,7 @@ function Experiences() {
 						<div
 							onClick={() => {
 								setSelectedItemIndex(index);
+								
 							}}
 							className='cursor-pointer'>
 							<h1
@@ -38,10 +39,7 @@ function Experiences() {
 						{experiences[selectedItemIndex].company}
 					</h1>
 					<p className='text-white'>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
-						ratione enim possimus quaerat hic saepe debitis ducimus porro,
-						repudiandae vel perferendis ab tempore veniam rem facere laboriosam,
-						accusantium aperiam numquam!
+						{experiences[selectedItemIndex].description}
 					</p>
 				</div>
 				<div></div>
