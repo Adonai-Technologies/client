@@ -15,8 +15,9 @@ function Admin() {
 	return (
 		<div>
 			<Header />
+			<h1 className='text-2xl p-5 font-semibold text-primary'>Admin Panel</h1>
 			{portfolioData && (
-				<div className='mt-5 p-5 font-semibold'>
+				<div className=' p-5 font-semibold sm:overflow-x-auto'>
 					<Tabs defaultActiveKey='1'>
 						<TabPane tab='Intro' key='1'>
 							<AdminIntro />
@@ -28,13 +29,13 @@ function Admin() {
 							<AdminExperiences />
 						</TabPane>
 						<TabPane tab='Projects' key='4'>
-							<AdminProjects/>
+							<AdminProjects />
 						</TabPane>
 						<TabPane tab='Courses' key='5'>
-							<AdminCourses/>
+							<AdminCourses />
 						</TabPane>
 						<TabPane tab='Contact' key='6'>
-							<AdminContact/>
+							<AdminContact />
 						</TabPane>
 					</Tabs>
 				</div>

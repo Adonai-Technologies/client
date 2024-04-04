@@ -8,7 +8,7 @@ function AdminCourses() {
 	const dispatch = useDispatch();
 	const { portfolioData } = useSelector((state) => state.root);
 	const { course } = portfolioData;
-	console.log(portfolioData);
+	
 	const [showAddEditModal, setShowAddEditModal] = React.useState(false);
 	const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
 	const [type, setType] = React.useState("add");
@@ -76,7 +76,7 @@ function AdminCourses() {
 					Add course
 				</button>
 			</div>
-			<div className='grid grid-cols-3 gap-5 mt-5'>
+			<div className='grid grid-cols-3 gap-5 mt-5 sm:grid-cols-1'>
 				{course.map((course, index) => (
 					<div
 						key={index}

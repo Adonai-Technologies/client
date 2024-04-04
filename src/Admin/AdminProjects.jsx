@@ -74,7 +74,7 @@ function AdminProjects() {
 					Add project
 				</button>
 			</div>
-			<div className='grid grid-cols-3 gap-5 mt-5'>
+			<div className='grid grid-cols-3 gap-5 mt-5 sm:grid-cols-1'>
 				{projects.map((project, index) => (
 					<div
 						key={index}
