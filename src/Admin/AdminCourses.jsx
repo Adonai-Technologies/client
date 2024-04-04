@@ -4,14 +4,15 @@ import { Modal, Form, Input, Button, message } from "antd";
 import axios from "axios";
 import { ShowLoading, HideLoading, ReloadData } from "../Redux/rootSlice"; // corrected import
 
-function AdminProjects() {
+function AdminCourses() {
 	const dispatch = useDispatch();
 	const { portfolioData } = useSelector((state) => state.root);
-	const { projects } = portfolioData;
+	const { course } = portfolioData;
+	console.log(portfolioData);
 	const [showAddEditModal, setShowAddEditModal] = React.useState(false);
 	const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
-	const [type, setype] = React.useState("add");
-
+	const [type, setType] = React.useState("add");
+	const { form } = Form.useForm();
 	const onFinish = async (values) => {
 		try {
 			const tempTechnologies = values?.technologies?.split(",");
@@ -19,12 +20,12 @@ function AdminProjects() {
 			dispatch(ShowLoading());
 			let response;
 			if (selectedItemForEdit) {
-				response = await axios.post("/api/update-project", {
+				response = await axios.post("/api/update-course", {
 					...values,
 					_id: selectedItemForEdit._id,
 				});
 			} else {
-				response = await axios.post("/api/add-project", values);
+				response = await axios.post("/api/add-course", values);
 			}
 			dispatch(HideLoading());
 			if (response.data.success) {
@@ -33,6 +34,7 @@ function AdminProjects() {
 				setSelectedItemForEdit(null);
 				dispatch(HideLoading());
 				dispatch(ReloadData(true));
+                form?.resetFields()
 			} else {
 				message.error(response.data.message);
 			}
@@ -42,11 +44,11 @@ function AdminProjects() {
 		}
 	};
 
-	const handleDelete = async (project) => {
+	const handleDelete = async (course) => {
 		try {
 			dispatch(ShowLoading());
-			const response = await axios.post("/api/delete-project", {
-				_id: project._id,
+			const response = await axios.post("/api/delete-course", {
+				_id: course._id,
 			});
 			dispatch(HideLoading());
 			if (response.data.success) {
@@ -71,30 +73,30 @@ function AdminProjects() {
 						setSelectedItemForEdit(null);
 						setShowAddEditModal(true);
 					}}>
-					Add project
+					Add course
 				</button>
 			</div>
 			<div className='grid grid-cols-3 gap-5 mt-5'>
-				{projects.map((project, index) => (
+				{course.map((course, index) => (
 					<div
 						key={index}
 						className='shadow border-2 p-5 border-gray-400 flex flex-col gap-5'>
-						<h1 className='text-primary text-xl font-bold'>{project.title}</h1>
+						<h1 className='text-primary text-xl font-bold'>{course.title}</h1>
 						<hr />
-						<img src={project.image} alt='' className='h-60 w-80 rounded' />
-						<h1>Description : {project.description}</h1>
+						<img src={course.image} alt='' className='h-60 w-80 rounded' />
+						<h1>Description : {course.description}</h1>
 						<div className='flex justify-end gap-5 mt-5'>
 							<button
 								className='bg-secondary text-white px-5 py-2 rounded'
-								onClick={() => handleDelete(project)}>
+								onClick={() => handleDelete(course)}>
 								Delete
 							</button>
 							<button
 								className='bg-primary text-white px-5 py-2 rounded'
 								onClick={() => {
-									setSelectedItemForEdit(project);
+									setSelectedItemForEdit(course);
 									setShowAddEditModal(true);
-									setype("edit");
+									setType("edit");
 								}}>
 								Edit
 							</button>
@@ -106,13 +108,14 @@ function AdminProjects() {
 			{(type === "add" || selectedItemForEdit) && (
 				<Modal
 					visible={showAddEditModal} // corrected prop name
-					title={selectedItemForEdit ? "Edit project" : "Add project"}
+					title={selectedItemForEdit ? "Edit course" : "Add course"}
 					footer={null}
 					onCancel={() => {
 						setShowAddEditModal(false);
 						setSelectedItemForEdit(null);
 					}}>
 					<Form
+                        form={form}
 						layout='vertical'
 						onFinish={onFinish}
 						initilalValues={
@@ -129,13 +132,10 @@ function AdminProjects() {
 						</Form.Item>
 
 						<Form.Item name='description' label='Description'>
-							<Input.TextArea placeholder='Project description' />
+							<Input.TextArea placeholder='course description' />
 						</Form.Item>
 						<Form.Item name='link' label='Link'>
 							<Input placeholder='Link' />
-						</Form.Item>
-						<Form.Item name='technologies' label='Technologies'>
-							<Input placeholder='Technologies' />
 						</Form.Item>
 
 						<div className='flex justify-end'>
@@ -161,4 +161,4 @@ function AdminProjects() {
 	);
 }
 
-export default AdminProjects;
+export default AdminCourses;

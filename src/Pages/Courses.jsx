@@ -39,12 +39,7 @@ function Courses() {
 						<p className='text-white'>
 							{course[selectedItemIndex].description}
 						</p>
-						<p className='text-white'>
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-							Explicabo ratione enim possimus quaerat hic saepe debitis ducimus
-							porro, repudiandae vel perferendis ab tempore veniam rem facere
-							laboriosam, accusantium aperiam numquam!
-						</p>
+						
 					</div>
 					<img
 						src={course[selectedItemIndex].image}
