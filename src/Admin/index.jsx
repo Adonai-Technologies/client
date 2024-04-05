@@ -15,6 +15,7 @@ function Admin() {
 	return (
 		<div>
 			<Header />
+
 			<h1 className='text-2xl p-5 font-semibold text-primary'>Admin Panel</h1>
 			{portfolioData && (
 				<div className=' p-5 font-semibold sm:overflow-x-auto'>
