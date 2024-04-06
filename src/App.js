@@ -11,6 +11,7 @@ import {
 	ReloadData,
 } from "./Redux/rootSlice";
 import Admin from "./Admin";
+import AdminLogin from "./Admin/AdminLogin";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/admin' element={<Admin />} />
+				<Route path='/admin-login' element={<AdminLogin />} />
 			</Routes>
 		</BrowserRouter>
 	);
